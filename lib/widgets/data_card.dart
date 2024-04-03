@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
@@ -100,6 +101,11 @@ class DataCard extends StatelessWidget {
                               width: 110.w,
                               height: 34.h,
                               child: TextField(
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.deny(
+                                    RegExp(r'^0+'),
+                                  ),
+                                ],
                                 onChanged: (value) => isMendatory
                                     ? updateMendate(i, id, textControllers[i],
                                         context, state)
